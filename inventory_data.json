@@ -1,0 +1,49 @@
+{
+    "inventory": {
+        "G01": {
+            "device_id": "G01",
+            "name": "PlayStation 5 DevKit",
+            "category": "Console",
+            "stock": 3,
+            "location": [
+                0,
+                0
+            ]
+        },
+        "G02": {
+            "device_id": "G02",
+            "name": "Meta Quest 3 VR Headset",
+            "category": "VR Gear",
+            "stock": 3,
+            "location": [
+                0,
+                1
+            ]
+        },
+        "G03": {
+            "device_id": "G03",
+            "name": "Elgato 4K60 Capture Card",
+            "category": "Streaming",
+            "stock": 4,
+            "location": [
+                1,
+                0
+            ]
+        },
+        "G04": {
+            "device_id": "G04",
+            "name": "Steam Deck OLED 1TB",
+            "category": "Handheld",
+            "stock": 2,
+            "location": [
+                1,
+                1
+            ]
+        }
+    },
+    "borrow_records": {
+        "สมหญิง (QA)": {
+            "G02": 2
+        }
+    }
+}
