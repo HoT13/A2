@@ -1,15 +1,42 @@
-Game Company Borrow System (A2 Project)
-ระบบจัดการยืม-คืนอุปกรณ์เกมและสื่อบันเทิงส่วนกลางสำหรับบริษัทพัฒนาเกม พัฒนาด้วยภาษา Python 
-โดยประยุกต์ใช้แนวคิดการเขียนโปรแกรมเชิงวัตถุ (Object-Oriented Programming - OOP) และโครงสร้างข้อมูล (Data Structures) 
-เพื่อควบคุมสต็อกอุปกรณ์และประวัติการยืม-คืนของพนักงานได้อย่างถูกต้อง แม่นยำ📌 System Architecture & Featuresระบบประกอบด้วย 2 คลาสหลัก ดังนี้:
-1. Class GamingDeviceคลาสสำหรับจัดเก็บข้อมูลของอุปกรณ์แต่ละชิ้นAttributes: device_id, name, category, stockSpecial Method __str__(): จัดรูปแบบการแสดงผลข้อมูลอุปกรณ์ให้เป็นระเบียบ อ่านง่ายเมื่อเรียกใช้งานผ่าน print()
-2. Class GameCompanyBorrowSystemคลาสหลักสำหรับบริหารจัดการคลังและการยืม-คืนInventory Tracking (self.inventory): ใช้ Dictionary เก็บ Object ของอุปกรณ์โดยมี device_id เป็น Key
-ช่วยให้การค้นหาและเข้าถึงข้อมูลมีประสิทธิภาพสูง ($O(1)$)Borrow Records (self.borrow_records): ใช้ Nested Dictionary ในรูปแบบ { emp_name: { device_id: quantity } }
-เพื่อบันทึกประวัติการยืมของพนักงานแต่ละคนแยกตามรายชิ้นMain Methods:display_inventory(): แสดงรายการอุปกรณ์และจำนวนสต็อกคงเหลือทั้งหมดborrow_device(emp_name, device_id, qty):
-ตรวจสอบเงื่อนไข ตัดสต็อก และบันทึกประวัติการยืมreturn_device(emp_name, device_id, qty): ตรวจสอบประวัติ คืนสต็อกเข้าคลัง และอัปเดต/ลบประวัติการยืม
+# 🎮 Game Company Borrow System (OOP Project - A2)
 
+ระบบจัดการยืม-คืนอุปกรณ์เกมและสื่อบันเทิงส่วนกลาง พัฒนาด้วยภาษา Python โดยประยุกต์ใช้หลักการเขียนโปรแกรมเชิงวัตถุและโครงสร้างข้อมูล
 
-🛡️ Error Handling & Data Validationระบบได้รับการออกแบบให้มีกลไกป้องกันข้อผิดพลาด (Defensive Programming) 
-เพื่อป้องกันโปรแกรมหยุดทำงาน (Crash) ดังนี้:ประเภท Errorสาเหตุที่อาจเกิดขึ้นกลไกการจัดการและการแก้ไข (Validation Solution)Invalid Key Errorกรอก device_id ที่ไม่มีอยู่จริงในระบบตรวจสอบด้วยเงื่อนไข 
-if device_id not in self.inventory ก่อนเข้าถึงข้อมูลInvalid Quantity Errorระบุจำนวนยืมเป็น 0, ติดลบ หรือยืมเกินจำนวนสต็อกที่มีตรวจสอบ if qty <= 0 และ if device.stock < qty 
-ก่อนทำการตัดสต็อกUnmatched Record Errorพยายามคืนอุปกรณ์ที่ตนเองไม่ได้ยืม หรือคืนเกินจำนวนที่ยืมไปตรวจสอบใน borrow_records ระดับพนักงานและรหัสอุปกรณ์ก่อนคืนสต็อก🚀 How to Run & Sample Usage
+---
+
+## 📌 สมาชิกกลุ่ม / ผู้จัดทำ
+- **ชื่อ-นามสกุล:** [ใส่ชื่อ-นามสกุลของคุณ]
+- **รหัสนักศึกษา:** [ใส่รหัสนักศึกษาของคุณ]
+- **รายวิชา:** การเขียนโปรแกรมเชิงวัตถุ (Object-Oriented Programming)
+
+---
+
+## ⚙️ องค์ประกอบหลักของโปรแกรม (Key Components)
+
+### 1. Object-Oriented Programming (OOP)
+โปรแกรมถูกออกแบบโดยแบ่งหน้าที่เป็น 2 คลาสหลัก:
+- **`GamingDevice`:** คลาสแม่พิมพ์สำหรับสร้าง Object อุปกรณ์แต่ละชิ้น เก็บข้อมูล `device_id`, `name`, `category`, `stock`, และพิกัด `location` พร้อมใช้ `@property` ควบคุมความปลอดภัยของข้อมูลสต็อกไม่ให้ติดลบ
+- **`GameCompanyBorrowSystem`:** คลาสควบคุมระบบหลัก ทำหน้าที่บริหารคลังสินค้า ประวัติการยืม-คืน และเรียกใช้งานเมธอดต่างๆ
+
+### 2. Array & 2D Array (โครงสร้างข้อมูล)
+- **Dictionary ($O(1)$ Lookup):** ใช้เก็บรายการอุปกรณ์ในคลัง (`self.inventory`) และบันทึกประวัติการยืมแบบ Nested Dictionary (`self.borrow_records`)
+- **2D Array (Grid Storage):** ใช้สร้างแผนผังตู้เก็บอุปกรณ์ขนาด 3x4 (`self.storage_grid`) เพื่อจำลองตำแหน่งพิกัดจัดเก็บสินค้าจริงในคลัง
+
+### 3. Functions & Methods (ฟังก์ชันการทำงาน)
+- `display_inventory()`: แสดงรายการอุปกรณ์และสต็อกคงเหลือทั้งหมด
+- `display_storage_grid()`: แสดงแผนผังตำแหน่ง 2D Grid ของตู้เก็บอุปกรณ์
+- `borrow_device(emp_name, device_id, qty)`: ฟังก์ชันตรวจสอบเงื่อนไข ตัดสต็อก และบันทึกประวัติการยืม
+- `return_device(emp_name, device_id, qty)`: ฟังก์ชันตรวจสอบประวัติ คืนสต็อกเข้าคลัง และเคลียร์ข้อมูลเมื่อส่งคืนครบ
+
+### 4. Modules & File I/O (การจัดการไฟล์)
+- ใช้งานโมดูลมาตรฐานของ Python ได้แก่ `json` สำหรับบันทึกและโหลดข้อมูลคลังสินค้าอัตโนมัติลงไฟล์ `inventory_data.json` และโมดูล `os` สำหรับตรวจสอบเส้นทางไฟล์
+
+---
+
+## 🚀 วิธีการใช้งานโปรแกรม (How to Run)
+
+1. ติดตั้ง Python (เวอร์ชัน 3.8 ขึ้นไป) บนเครื่องคอมพิวเตอร์
+2. โคลนหรือดาวน์โหลดโปรเจกต์นี้มาไว้ที่เครื่อง
+3. เปิด Terminal หรือ Command Prompt ในโฟลเดอร์โปรเจกต์ แล้วรันคำสั่ง:
+   ```bash
+   python main.py
