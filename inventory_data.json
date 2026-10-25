@@ -14,7 +14,7 @@
             "device_id": "G02",
             "name": "Meta Quest 3 VR Headset",
             "category": "VR Gear",
-            "stock": 3,
+            "stock": 1,
             "location": [
                 0,
                 1
@@ -43,7 +43,7 @@
     },
     "borrow_records": {
         "สมหญิง (QA)": {
-            "G02": 2
+            "G02": 4
         }
     }
 }
